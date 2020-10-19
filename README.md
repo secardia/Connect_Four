@@ -1,2 +1,2 @@
 # Connect4-Python
-Connect 4 programmed in python using pygame
+Connect 4 using python and pygame
