@@ -1,8 +1,11 @@
-from Players.Player import Player
+from model.players.Player import Player
 import time
 
 class Game:
 
+    """
+    Game avec view pour pouvoir intéragir (jouer/regarder)
+    """
     def __init__(self, board, player1, player2, view):
         self.board = board
         player1.set_board(board)

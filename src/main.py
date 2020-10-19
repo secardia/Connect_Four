@@ -1,18 +1,18 @@
-from View.GraphicView import *
+from view.GraphicView import *
 
-from AI.AI_Determinist import *
-from AI.AI_MonteCarlo import *
-from AI.AI_MonteCarlo_Rand_Up import *
-from AI.AI_MonteCarlo_Up import *
-from AI.AI_MonteCarlo_Up_Heur import *
+from model.AI.AI_Determinist import *
+from model.AI.AI_MonteCarlo import *
+from model.AI.AI_MonteCarlo_Rand_Up import *
+from model.AI.AI_MonteCarlo_Up import *
+from model.AI.AI_MonteCarlo_Up_Heur import *
 
-from AI.AI_Rand_Up import *
-from AI.AI_Random import *
+from model.AI.AI_Rand_Up import *
+from model.AI.AI_Random import *
 
-from Board import Board
+from model.Board import Board
 import src.Constants as Co
-from Controller.Game import *
-from Controller.AI_Game import *
+from controller.Game import *
+from controller.AI_Game import *
 import TimeCounter as Tc
 
 
@@ -22,14 +22,14 @@ def run():
 
     # AI
     # P1
-    oracle = AI_MonteCarlo_Up(board, Co.P1_PIECE, 100)
-    player1 = AI_Player("Player 1", oracle.board, oracle.piece, oracle)
+    #oracle1 = AI_MonteCarlo(board, Co.P1_PIECE, 3000)
+    #player1 = AI_Player("Player 1", oracle1.board, oracle1.piece, oracle1)
 
-    oracle2 = AI_MonteCarlo_Up(board, Co.P2_PIECE, 1000)
+    oracle2 = AI_MonteCarlo_Up_Heur(board, Co.P2_PIECE, 1000)
     player2 = AI_Player("Player 2", oracle2.board, oracle2.piece, oracle2)
 
     # Human
-    #player1 = Player("Player 1", board, Co.P1_PIECE)
+    player1 = Player("Player 1", board, Co.P1_PIECE)
     #player2 = Player("Player 2", board, Co.P2_PIECE)
 
     # View
@@ -105,11 +105,14 @@ def run_AI_battle(player1, player2, gameNumber):
 
 
 if __name__ == '__main__':
-    oracle1 = AI_MonteCarlo_Up(None, Co.P1_PIECE, 100)
+    """
+    oracle1 = AI_MonteCarlo_Up(None, Co.P1_PIECE, 500)
     oracle2 = AI_MonteCarlo_Up(None, Co.P1_PIECE, 500)
     player1 = AI_Player("Player 1", oracle1.board, oracle1.piece, oracle1)
     player2 = AI_Player("Player 2", oracle2.board, oracle2.piece, oracle2)
     print(run_AI_battle_ordered(player1, player2, 100))
+    """
+    run()
 
     """
     from multiprocessing import Process
@@ -127,8 +130,6 @@ if __name__ == '__main__':
         end = time.time()
         print("With", worker_count, "process, process time : ", end - start)
 
-"""
-    """
     mid = time.time()
     print(run_test_2(4000))
 
@@ -141,4 +142,4 @@ if __name__ == '__main__':
     print("Iter_is_a_winning_play :", Tc.Iter_is_a_winning_play)
     print("Time_is_full :", Tc.Time_is_full / total * 100, "%")
 
-"""
+    """

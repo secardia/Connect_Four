@@ -1,7 +1,7 @@
-from Controller.AI_Game import AI_Game
+from controller.AI_Game import AI_Game
 
-from AI.AI_Rand_Up import AI_Rand_Up
-from Players.AI_Player import AI_Player
+from model.AI.AI_Rand_Up import AI_Rand_Up
+from model.players.AI_Player import AI_Player
 
 
 def monte_carlo_worker(board, piece, numberOfSimulations):

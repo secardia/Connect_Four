@@ -3,7 +3,7 @@ class AI_Player:
 
     def __init__(self, name, board, piece, oracle):
         self.name = name
-        self.set_board(board)
+        self.board = board
         self.piece = piece
         self.oracle = oracle
 

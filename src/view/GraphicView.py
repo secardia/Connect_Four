@@ -1,7 +1,7 @@
 import math
 import sys
 import pygame
-from Players.Player import *
+from model.players.Player import *
 import src.Constants as Co
 
 
@@ -54,9 +54,9 @@ class GraphicView:
 
     def print_board(self):
         pygame.draw.rect(self.screen, Co.BOARD_COLOR,
-                         (0, Co.SQUARESIZE, Co.SQUARESIZE * (Co.COLUMN_NUMBER + 1), Co.SQUARESIZE * (Co.ROW_NUMBER + 1)))
-        for c in range(Co.COLUMN_NUMBER + 1):
-            for r in range(Co.ROW_NUMBER + 1):
+                         (0, Co.SQUARESIZE, Co.SQUARESIZE * Co.COLUMN_NUMBER, Co.SQUARESIZE * Co.ROW_NUMBER))
+        for c in range(Co.COLUMN_NUMBER):
+            for r in range(Co.ROW_NUMBER):
                 piece = self.game.board.matrix[r][c]
                 color = Co.BACKGROUND_COLOR
                 if piece == Co.P1_PIECE:
@@ -78,7 +78,10 @@ class GraphicView:
             # Egalité
             label = self.font.render("No winner !", 1, Co.BOARD_COLOR)
         self.screen.blit(label, (40, 10))
+        # Update l'interface
         pygame.display.update()
+        # On clear les events pour refresh
+        pygame.event.clear()
 
     def get_current_color(self):
         return self.playerColors[self.game.playersTurn]
